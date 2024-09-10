@@ -1,0 +1,8 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import "@/styles/jquery.smartmenus.bootstrap.css";
+import "@/styles/style.css";
+import "@/styles/globals.scss"
+
+export default function App({ Component, pageProps }) {
+  return <Component {...pageProps} />;
+}
