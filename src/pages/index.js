@@ -126,7 +126,7 @@ const HomePage = () => {
                                             <div class="item-cha-dcnt">
                                                 <a href="https://sgdkiengiang.ioc.edu.vn/">
                                                     <div class="item-dcnt">
-                                                        <div class="col-md-12 text-dcnt">Quản lý Mầm Non</div>
+                                                        <div class="col-md-12 text-dcnt">Quản lý cấp Phòng</div>
                                                     </div>
                                                 </a>
                                             </div>
@@ -135,7 +135,16 @@ const HomePage = () => {
                                             <div class="item-cha-dcnt">
                                                 <a href="https://sgdkiengiang.ioc.edu.vn/">
                                                     <div class="item-dcnt">
-                                                        <div class="col-md-12 text-dcnt">Quản lý Mầm Non</div>
+                                                        <div class="col-md-12 text-dcnt">Quản lý cấp Sở</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="item-cha-dcnt">
+                                                <a href="https://sgdkiengiang.ioc.edu.vn/">
+                                                    <div class="item-dcnt">
+                                                        <div class="col-md-12 text-dcnt">Quản lý cấp Bộ</div>
                                                     </div>
                                                 </a>
                                             </div>
