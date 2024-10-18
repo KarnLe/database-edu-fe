@@ -1,5 +1,31 @@
+import axiosClient from "@/api/axiosClient";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const VanBan = () => {
+    const router = useRouter();
+
+    const [title, setTitle] = useState('');
+    const [subTitle, setSubTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [created, setCreated] = useState('');
+
+    useEffect(() => {
+        const fetchDocumentDetail = async () => {
+            const documentId = router.query['ten-van-ban'];
+            try {
+                const res = await axiosClient.get(`/documents/details/${documentId}`);
+                setTitle(res?.title);
+                setSubTitle(res?.sub_title);
+                setContent(res?.content);
+                setCreated(res?.created);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+        fetchDocumentDetail();
+    }, [router]);
+
     return (
         <>
             <div id="header-wrapper" class="header maSo92">
@@ -30,29 +56,21 @@ const VanBan = () => {
                         <div class="gr-chitiet">
                             <div class="row">
                             <div class="col-md-12 date-pub-c">
-                                Ngày đăng bài:
-                                30/06/2024 08:43:32
+                                {created ? `Ngày đăng bài: ${created}` : ''}
                             </div>
                             </div>
                             <div class="row">
                             <div class="col-md-12">
                                 <div class="title-tieudiem-c">
-                                    <a>
-                                    Công văn số 3240/BGDĐT-CSVC ngày 28/06/2024 về việc thực hiện báo cáo thực trạng, nhu cầu về số lớp học, phòng học, phòng công vụ cho giáo viên</a>
+                                    <a>{title}</a>
                                 </div>
                             </div>
                             </div>
                             <div class="row des-news">
-                            <div class="col-md-12">
-                                Công văn số 3240/BGDĐT-CSVC ngày 28/06/2024 về việc thực hiện báo cáo thực trạng, nhu cầu về số lớp học, phòng học, phòng công vụ cho giáo viên
-                            </div>
+                            <div class="col-md-12">{subTitle}</div>
                             </div>
                             <div class="row content-news">
-                            <div class="col-md-12">
-                                <p>Chi tiết văn bản v&agrave; hướng dẫn b&aacute;o c&aacute;o vui l&ograve;ng xem tại đ&acirc;y:</p>
-                                <p>1.&nbsp;C&ocirc;ng văn số 3240/BGDĐT-CSVC ng&agrave;y 28/06/2024: <strong><a href="#" target="_blank">&gt;&gt;Xem văn bản&lt;&lt;</a></strong></p>
-                                <p>2. Phụ lục hướng dẫn nhập liệu, b&aacute;o c&aacute;o:&nbsp;<strong><a href="#" target="_blank">&gt;&gt;Xem t&agrave;i liệu&lt;&lt;</a></strong></p>
-                            </div>
+                            <div class="col-md-12" dangerouslySetInnerHTML={{ __html: content }}></div>
                             </div>
                             <div class="row des-news">
                             <div class="col-md-6">
@@ -76,7 +94,7 @@ const VanBan = () => {
                                 <td>
                                     <div class="item-thongbao">
                                         <div class="title-thongbao">
-                                        <a href='cong-van-so-4546-bgddt-vp-ngay-04-10-2019-101.htm' style={{ fontSize: "14px !important" }}>Công văn số 4546/BGDĐT-VP ngày 04/10/2019
+                                        <a href='#' style={{ fontSize: "14px !important" }}>Công văn số 4546/BGDĐT-VP ngày 04/10/2019
                                         </a>
                                         </div>
                                         <div class="date-sub">
@@ -89,7 +107,7 @@ const VanBan = () => {
                                 <td>
                                     <div class="item-thongbao">
                                         <div class="title-thongbao">
-                                        <a href='thong-tu-so-24-2018-tt-bgddt-ngay-28-9-2018-102.htm' style={{ fontSize: "14px !important" }}>Thông tư số 24/2018/TT-BGDĐT ngày 28/9/2018
+                                        <a href='#' style={{ fontSize: "14px !important" }}>Thông tư số 24/2018/TT-BGDĐT ngày 28/9/2018
                                         </a>
                                         </div>
                                         <div class="date-sub">
@@ -102,7 +120,7 @@ const VanBan = () => {
                                 <td>
                                     <div class="item-thongbao">
                                         <div class="title-thongbao">
-                                        <a href='van-ban-so-2199-bgddt-vp-ngay-22-5-2019-103.htm' style={{ fontSize: "14px !important" }}>Văn bản số 2199/BGDĐT-VP ngày 22/5/2019
+                                        <a href='#' style={{ fontSize: "14px !important" }}>Văn bản số 2199/BGDĐT-VP ngày 22/5/2019
                                         </a>
                                         </div>
                                         <div class="date-sub">
@@ -115,7 +133,7 @@ const VanBan = () => {
                                 <td>
                                     <div class="item-thongbao">
                                         <div class="title-thongbao">
-                                        <a href='van-ban-so-2034-bgddt-ngcbqlgd-ngay-13-5-2019-104.htm' style={{ fontSize: "14px !important" }}>Văn bản số 2034/BGDĐT-NGCBQLGD ngày 13/5/2019
+                                        <a href='#' style={{ fontSize: "14px !important" }}>Văn bản số 2034/BGDĐT-NGCBQLGD ngày 13/5/2019
                                         </a>
                                         </div>
                                         <div class="date-sub">
@@ -128,7 +146,7 @@ const VanBan = () => {
                                 <td>
                                     <div class="item-thongbao">
                                         <div class="title-thongbao">
-                                        <a href='van-ban-so-1688-bgddt-vp-ngay-22-4-2019-105.htm' style={{ fontSize: "14px !important" }}>Văn bản số 1688/BGDĐT-VP ngày 22/4/2019
+                                        <a href='#' style={{ fontSize: "14px !important" }}>Văn bản số 1688/BGDĐT-VP ngày 22/4/2019
                                         </a>
                                         </div>
                                         <div class="date-sub">

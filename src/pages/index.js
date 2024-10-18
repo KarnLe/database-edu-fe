@@ -1,10 +1,32 @@
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AccessPotalPageModal from "@/components/accessPotalPageModal";
+import axiosClient from "@/api/axiosClient";
+import { swtoast } from '@/mixins/Swal.mixin';
 
 const HomePage = () => {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [levelId, setLevelId] = useState(null);
+    const [documentList, setDocumentList] = useState([]);
+
+    useEffect(() => {
+        const fetchDocumentList = async () => {
+            try {
+                const res = await axiosClient.get("/documents");
+                const documentList = (Array.isArray(res) && res) || [];
+                setDocumentList(documentList);
+            } catch (error) {
+                throw new Error(error);
+            }
+        }
+        fetchDocumentList()
+        .catch((error) => {
+            console.log(error);
+            swtoast.error({
+                text: "Gặp lỗi khi tải danh sách văn bản, vui lòng thử lại."
+            });
+        });
+    }, []);
 
     const showModal = (levelId = null) => {
         setLevelId(levelId);
@@ -140,15 +162,6 @@ const HomePage = () => {
                                                 </a>
                                             </div>
                                         </div>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <div class="item-cha-dcnt">
-                                                <a href="https://sgdkiengiang.ioc.edu.vn/">
-                                                    <div class="item-dcnt">
-                                                        <div class="col-md-12 text-dcnt">Quản lý cấp Bộ</div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -239,11 +252,28 @@ const HomePage = () => {
                                         </div>
                                         <div class="RadAjaxPanel" id="ctl00_ContentPlaceHolder1_ctl00_ctl00_ContentPlaceHolder1_ctl00_lstNotifyPanel">
                                             <table id="ContentPlaceHolder1_ctl00_lstNotify" cellspacing="0" style={{ borderCollapse: "collapse" }}>
-                                                <tr>
+                                                {documentList && documentList.map((document) => {
+                                                    return (
+                                                        <tr>
+                                                            <td>
+                                                                <div class="item-thongbao">
+                                                                    <div class="title-thongbao">
+                                                                        <Link href={`/van-ban/${document?.id}`}>{document?.title}</Link>
+                                                                    </div>
+                                                                    <div class="date-sub">
+                                                                        <label class="sub-tb">Tin đăng vào</label><label class="date">{document?.created}</label>
+                                                                    </div>
+                                                                    <div class="chuthich-tb comment">{document?.sub_title}</div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    )
+                                                })}
+                                                {/* <tr>
                                                     <td>
                                                         <div class="item-thongbao">
                                                             <div class="title-thongbao">
-                                                                <Link href='/van-ban/cong-van-so-3240-bgddt-csvc-ngay-28-06-2024-ve-viec-thuc-hien-bao-cao-thuc-trang-nhu-cau-ve-so-lop-hoc-phong-hoc-phong-cong-vu-cho-giao-vien-906'>
+                                                                <Link href='/van-ban/1'>
                                                                     Công văn số 3240/BGDĐT-CSVC ngày 28/06/2024 về việc thực hiện báo cáo thực trạng, nhu cầu về số lớp học, phòng học, phòng công vụ cho giáo viên
                                                                 </Link>
                                                             </div>
@@ -255,8 +285,8 @@ const HomePage = () => {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                </tr>
-                                                <tr>
+                                                </tr> */}
+                                                {/* <tr>
                                                     <td>
                                                         <div class="item-thongbao">
                                                             <div class="title-thongbao">
@@ -272,8 +302,8 @@ const HomePage = () => {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                </tr>
-                                                <tr>
+                                                </tr> */}
+                                                {/* <tr>
                                                     <td>
                                                         <div class="item-thongbao">
                                                             <div class="title-thongbao">
@@ -289,8 +319,8 @@ const HomePage = () => {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                </tr>
-                                                <tr>
+                                                </tr> */}
+                                                {/* <tr>
                                                     <td>
                                                         <div class="item-thongbao">
                                                             <div class="title-thongbao">
@@ -306,7 +336,7 @@ const HomePage = () => {
                                                             </div>
                                                         </div>
                                                     </td>
-                                                </tr>
+                                                </tr> */}
                                             </table>
                                         </div>
                                         <div class="empty-record">
