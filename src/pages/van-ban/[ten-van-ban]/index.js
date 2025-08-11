@@ -32,7 +32,7 @@ const VanBan = () => {
                 <a href="/">
                 <img class="logo" src="/logo-SGDDT-KG.png" style={{ width: "60px", height: "60px", margin: "10px" }}/>
                 </a>
-                <div class="navi-solu">SỞ GD&ĐT TỈNH KIÊN GIANG</div>
+                <div class="navi-solu">SỞ GD&ĐT TỈNH AN GIANG</div>
                 <div class="vavi-logo hidden-sm hidden-xs">CƠ SỞ DỮ LIỆU NGÀNH GIÁO DỤC VÀ ĐÀO TẠO</div>
                 <div class="supportMoetMobile">
                     <p class="csdlFooter">CƠ SỞ DỮ LIỆU NGÀNH GIÁO DỤC VÀ ĐÀO TẠO</p>
