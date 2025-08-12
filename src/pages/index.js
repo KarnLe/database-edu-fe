@@ -162,6 +162,15 @@ const HomePage = () => {
                                                 </a>
                                             </div>
                                         </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <div class="item-cha-dcnt">
+                                                <a href="https://iockg.vnptkiengiang.vn/">
+                                                    <div class="item-dcnt">
+                                                        <div class="col-md-12 text-dcnt">Trung tâm điều hành giáo dục tỉnh An Giang</div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
